@@ -4,22 +4,46 @@ import matplotlib.pyplot as plt
 from scipy.spatial.transform import Rotation as R
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Twist
+import math
 
 
 
 
 global LA
 global wheel_base
-global point
+global points
 global car_yaw 
 global car_global_axis
 
 car_yaw = None
 car_global_axis = None
 
-point  =  [7, 11]
+points  =  [[7, 11], [5,6], [4,3], [8, 12]]
 wheel_base = .6
 LA = 1
+
+
+def choosing_point(points):
+    if points is not None:
+     
+     return points[1]
+
+
+def distance(p1, p2):
+    return math.sqrt((p1[0]-p2[0])**2 + (p1[1]-p2[1])**2)
+
+def order_points(points):
+    ordered = [car_global_axis]
+    remaining = points.copy()
+
+    while remaining:
+        last = ordered[-1]
+        nearest = min(remaining, key=lambda p: distance(p, last))
+        ordered.append(nearest)
+        remaining.remove(nearest)
+
+    ordered.append(car_global_axis)  # add start point at the end
+    return ordered[1:]
 
 
 
@@ -98,8 +122,13 @@ def main(args = None):
         if car_yaw is None or car_global_axis is None:
             node.get_logger().warn("Waiting for odometry...")
             return
+        
+        
+        arranged_points = order_points(points)
 
-        local_point_X , local_point_Y = point_global_to_local(point, car_yaw, car_global_axis)
+        selected_point =  choosing_point(arranged_points)
+
+        local_point_X , local_point_Y = point_global_to_local(selected_point, car_yaw, car_global_axis)
 
         curv = calc_curv(local_point_Y)
 
