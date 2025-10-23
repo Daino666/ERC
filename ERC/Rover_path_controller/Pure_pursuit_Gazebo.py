@@ -26,7 +26,7 @@ LA = 1
 def choosing_point(points):
     if points is not None:
      
-     return points[1]
+     return points[1] 
 
 
 def distance(p1, p2):
