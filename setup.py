@@ -24,7 +24,8 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            "pure_pursuit = ERC.Pure_pursuit_Gazebo:main",
+            "pure_pursuit = ERC.Rover_path_controller.Pure_pursuit_Gazebo:main",
+            "Moving_wheels = ERC.Testing_Leapone:main"
             
         ],
     },
