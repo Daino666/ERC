@@ -21,6 +21,8 @@ car_global_axis = None
 points  =  [[7, 11], [5,6], [4,3], [8, 12]]
 wheel_base = .6
 LA = 1
+point =  [7,11]
+
 
 
 def choosing_point(points):
@@ -92,7 +94,7 @@ def calc_curv( point_local_y , lock_ahead= LA):
     return curvature
 
 
-def generate_command(curvature, linear_speed=1.0):
+def generate_command(curvature, linear_speed=3.0):
 
     angular_speed = curvature * linear_speed
 
@@ -128,7 +130,7 @@ def main(args = None):
 
         selected_point =  choosing_point(arranged_points)
 
-        local_point_X , local_point_Y = point_global_to_local(selected_point, car_yaw, car_global_axis)
+        local_point_X , local_point_Y = point_global_to_local(point, car_yaw, car_global_axis)
 
         curv = calc_curv(local_point_Y)
 
