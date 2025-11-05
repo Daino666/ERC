@@ -25,7 +25,9 @@ setup(
     entry_points={
         'console_scripts': [
             "pure_pursuit = ERC.Pure_pursuit_Gazebo:main",
-            "Moving_wheels = ERC.Testing_Leapone:main"
+            "Joy_control_leapone = ERC.Rover_control_Joy:main",
+            "moving_wheels = ERC.Testing_Leapone:main"
+            
             
         ],
     },

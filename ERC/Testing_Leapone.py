@@ -10,7 +10,7 @@ def main(args=None):
     node = Node("six_wheel_controller")
 
     num_axes = 6
-    velocity = 0.0  # you can change this value
+    velocity = 10.0  # you can change this value
    
     # Create service clients and publishers for each ODrive axis
     clients = []
