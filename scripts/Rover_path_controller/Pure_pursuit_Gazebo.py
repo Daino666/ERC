@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import rclpy
 import numpy as np
 from scipy.spatial.transform import Rotation as R
@@ -7,6 +6,7 @@ from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Twist
 import math
 from utils import distance, transform_to_local, yaw_from_quaternion
+from rover_nav.msg import Obstacle, ObstacleArray
 
 
 # ═══════════════════════════════════════════════════════════════

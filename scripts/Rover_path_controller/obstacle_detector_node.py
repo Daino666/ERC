@@ -8,7 +8,7 @@ import numpy as np
 from sklearn.cluster import DBSCAN
 import math
 from utils import distance, transform_to_local, yaw_from_quaternion
-from erc.msg import Obstacle, ObstacleArray
+from rover_nav.msg import Obstacle, ObstacleArray
 
 
 obstacle_pub = None
